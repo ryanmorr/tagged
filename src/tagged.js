@@ -1,7 +1,7 @@
-export default function tagged(callback) {
+export default function tagged(callback, mutator = (val) => val) {
     return (strings, ...values) => {
         return callback(strings.raw.reduce((acc, str, i) => {
-            return acc + (values[i - 1]).join('') + str;
+            return acc + (mutator(values[i - 1])) + str;
         }));
     };
 }

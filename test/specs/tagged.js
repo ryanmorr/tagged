@@ -12,4 +12,25 @@ describe('tagged', () => {
         expect(spy.called).to.equal(true);
         expect(value).to.equal('this is a test');
     });
+
+    it('should be able to mutate the values passed to the tagged template literal', () => {
+        const spy = sinon.spy((val) => (val + 1));
+        const fn = tagged((msg) => msg, spy);
+
+        const foo = 'foo';
+        const bar = 'bar';
+        const value = fn`${foo} ${bar}`;
+
+        expect(spy.callCount).to.equal(2);
+
+        const call1 = spy.getCall(0);
+        expect(call1.calledWith('foo')).to.equal(true);
+        expect(call1.returned('foo1')).to.equal(true);
+
+        const call2 = spy.getCall(1);
+        expect(call2.calledWith('bar')).to.equal(true);
+        expect(call2.returned('bar1')).to.equal(true);
+
+        expect(value).to.equal('foo1 bar1');
+    });
 });
