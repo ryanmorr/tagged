@@ -8,9 +8,15 @@ describe('tagged', () => {
     it('should return a function that can be called as a tagged template literal', () => {
         const spy = sinon.spy((msg) => msg);
         const fn = tagged(spy);
-        const value = fn`this is a test`;
-        expect(spy.called).to.equal(true);
-        expect(value).to.equal('this is a test');
+
+        const foo = 'foo';
+        const bar = 'bar';
+        const value1 = fn`this is a test`;
+        const value2 = fn`${foo} ${bar}`;
+
+        expect(spy.callCount).to.equal(2);
+        expect(value1).to.equal('this is a test');
+        expect(value2).to.equal('foo bar');
     });
 
     it('should be able to mutate the values passed to the tagged template literal', () => {
