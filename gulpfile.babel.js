@@ -16,7 +16,7 @@ const banner = `/*! ${pkg.name} v${pkg.version} | ${pkg.homepage} */\n`;
 
 const config = {
     files: './src/**/*.js',
-    entryFile: './src/index.js',
+    entryFile: './src/tagged.js',
     outputFile: `${pkg.name}.js`,
     outputDir: './dist/',
     specs: './test/specs/**/*.js'
