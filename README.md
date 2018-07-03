@@ -40,6 +40,7 @@ Log to the console:
 
 ``` javascript
 const log = tagged((msg) => console.log(msg));
+
 log`This is an imporant message`;
 ```
 
@@ -66,6 +67,7 @@ const toDOM = tagged((html) => {
 });
 
 const title = '<h1>Hello World</h1>';
+
 const frag = toDOM`<div>${title}</div>`;
 ```
 
@@ -89,6 +91,7 @@ const uri = tagged((str) => str, encodeURIComponent);
 
 const genre = 'rock & roll';
 const artist = 'led zeppelin';
+
 uri`/genre/${genre}/artist/${artist}`); //=> "/genre/rock%20%26%20roll/artist/led%20zeppelin"
 ```
 
