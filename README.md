@@ -85,7 +85,7 @@ dateRe.test('2018-01-10'); //=> true
 Encode parameters for a URI string:
 
 ``` javascript
-const uri = tagged((str) => str, (val) => encodeURIComponent(val));
+const uri = tagged((str) => str, encodeURIComponent);
 
 const genre = 'rock & roll';
 const artist = 'led zeppelin';
@@ -95,7 +95,7 @@ uri`/genre/${genre}/artist/${artist}`); //=> "/genre/rock%20%26%20roll/artist/le
 Stringify objects within a string to save them to the server or local storage:
 
 ``` javascript
-const save = tagged((str) => localStorage.setItem('data', str), (val) => JSON.stringify(val));
+const save = tagged((str) => localStorage.setItem('data', str), JSON.stringify);
 
 const data = {
     foo: 1,
