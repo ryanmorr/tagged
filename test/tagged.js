@@ -1,10 +1,8 @@
-import tagged from '../../src/tagged';
+import { expect } from 'chai';
+import sinon from 'sinon';
+import tagged from '../src/tagged';
 
 describe('tagged', () => {
-    it('should be defined and callable', () => {
-        expect(tagged).to.be.a('function');
-    });
-
     it('should return a function that can be called as a tagged template literal', () => {
         const spy = sinon.spy((msg) => msg);
         const fn = tagged(spy);

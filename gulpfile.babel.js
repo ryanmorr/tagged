@@ -5,42 +5,33 @@ import uglify from 'gulp-uglify';
 import header from 'gulp-header';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
+import mocha from 'gulp-mocha';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import del from 'del';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
-import { Server } from 'karma';
 
 const banner = `/*! ${pkg.name} v${pkg.version} | ${pkg.homepage} */\n`;
 
 const config = {
     files: './src/**/*.js',
     entryFile: './src/tagged.js',
-    outputFile: `${pkg.name}.js`,
+    outputFile: 'tagged.js',
     outputDir: './dist/',
-    specs: './test/specs/**/*.js'
+    specs: './test/*.js'
 };
 
-const karmaConfig = {
-    basePath: __dirname,
-    frameworks: ['browserify', 'mocha', 'chai', 'sinon', 'source-map-support'],
-    files: [config.specs],
-    preprocessors: {[config.specs]: ['browserify']},
-    browserify: {
-        debug: true,
-        transform: [
-            ['babelify', {plugins: ['istanbul']}]
-        ]
-    },
-    coverageReporter: {
-        type: 'html',
-        dir: './test/coverage/'
-    },
-    browsers: ['ChromeHeadless'],
-    autoWatch: false,
-    singleRun: true
-};
+function unitTests() {
+    return gulp.src(config.specs)
+        .pipe(mocha({
+            ui: 'bdd',
+            reporter: 'spec',
+            require: [
+                '@babel/register'
+            ]
+        }));
+}
 
 gulp.task('clean', () => {
     return del.sync([config.outputDir]);
@@ -70,17 +61,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('test', () => {
-    karmaConfig.reporters = ['mocha'];
-    new Server(karmaConfig, (code) => {
-        process.exit(code);
-    }).start();
-});
-
-gulp.task('coverage', () => {
-    karmaConfig.reporters = ['mocha', 'coverage'];
-    new Server(karmaConfig, (code) => {
-        process.exit(code);
-    }).start();
+    return unitTests();
 });
 
 gulp.task('watch', () => {
