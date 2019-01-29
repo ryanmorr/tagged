@@ -2,23 +2,21 @@
 
 [![Version Badge][version-image]][project-url]
 [![Build Status][build-image]][build-url]
-[![Dependencies][dependencies-image]][project-url]
 [![License][license-image]][license-url]
-[![File Size][file-size-image]][project-url]
 
 > A tiny utility function for creating tagged template literals.
 
-## Installation
+## Install
 
-Download the [development](http://github.com/ryanmorr/tagged/raw/master/dist/tagged.js) or [minified](http://github.com/ryanmorr/tagged/raw/master/dist/tagged.min.js) version, or install it via NPM:
+Download the [development](http://github.com/ryanmorr/tagged/raw/master/dist/tagged.js) or [minified](http://github.com/ryanmorr/tagged/raw/master/dist/tagged.min.js) version, or install via NPM:
 
 ``` sh
-npm install ryanmorr/tagged
+npm install @ryanmorr/tagged
 ```
 
 ## Usage
 
-Call `tagged` with a function to handle the resulting template string:
+Invoke with a function to handle the resulting template string:
 
 ``` javascript
 const fn = tagged((str) => str + ' bar');
@@ -117,7 +115,5 @@ This project is dedicated to the public domain as described by the [Unlicense](h
 [version-image]: https://badge.fury.io/gh/ryanmorr%2Ftagged.svg
 [build-url]: https://travis-ci.org/ryanmorr/tagged
 [build-image]: https://travis-ci.org/ryanmorr/tagged.svg
-[dependencies-image]: https://david-dm.org/ryanmorr/tagged.svg
 [license-image]: https://img.shields.io/badge/license-Unlicense-blue.svg
 [license-url]: UNLICENSE
-[file-size-image]: https://badge-size.herokuapp.com/ryanmorr/tagged/master/dist/tagged.min.js.svg?color=blue&label=file%20size
