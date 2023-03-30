@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import tagged from '../src/tagged';
+import tagged from '../../src/tagged.js';
 
 describe('tagged', () => {
     it('should return a function that can be called as a tagged template literal', () => {
