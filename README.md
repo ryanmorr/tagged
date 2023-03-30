@@ -1,14 +1,14 @@
 # tagged
 
 [![Version Badge][version-image]][project-url]
-[![Build Status][build-image]][build-url]
 [![License][license-image]][license-url]
+[![Build Status][build-image]][build-url]
 
 > A tiny utility function for creating tagged template literals.
 
 ## Install
 
-Download the [development](http://github.com/ryanmorr/tagged/raw/master/dist/tagged.js) or [minified](http://github.com/ryanmorr/tagged/raw/master/dist/tagged.min.js) version, or install via NPM:
+Download the [CJS](https://github.com/ryanmorr/tagged/raw/master/dist/cjs/tagged.js), [ESM](https://github.com/ryanmorr/tagged/raw/master/dist/esm/tagged.js), [UMD](https://github.com/ryanmorr/tagged/raw/master/dist/umd/tagged.js) versions or install via NPM:
 
 ``` sh
 npm install @ryanmorr/tagged
@@ -93,27 +93,13 @@ const artist = 'led zeppelin';
 uri`/genre/${genre}/artist/${artist}`); //=> "/genre/rock%20%26%20roll/artist/led%20zeppelin"
 ```
 
-Stringify objects within a string to save them to the server or local storage:
-
-``` javascript
-const save = tagged((str) => localStorage.setItem('data', str), JSON.stringify);
-
-const data = {
-    foo: 1,
-    bar: 2,
-    baz: [true, false]
-};
-
-save`${data}`;
-```
-
 ## License
 
 This project is dedicated to the public domain as described by the [Unlicense](http://unlicense.org/).
 
 [project-url]: https://github.com/ryanmorr/tagged
-[version-image]: https://badge.fury.io/gh/ryanmorr%2Ftagged.svg
-[build-url]: https://travis-ci.org/ryanmorr/tagged
-[build-image]: https://travis-ci.org/ryanmorr/tagged.svg
-[license-image]: https://img.shields.io/badge/license-Unlicense-blue.svg
+[version-image]: https://img.shields.io/github/package-json/v/ryanmorr/tagged?color=blue&style=flat-square
+[build-url]: https://github.com/ryanmorr/tagged/actions
+[build-image]: https://img.shields.io/github/actions/workflow/status/ryanmorr/tagged/node.js.yml?style=flat-square
+[license-image]: https://img.shields.io/github/license/ryanmorr/tagged?color=blue&style=flat-square
 [license-url]: UNLICENSE
