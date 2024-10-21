@@ -5,7 +5,10 @@
   "license": "Unlicense",
   "author": "Ryan Morr",
   "homepage": "https://github.com/ryanmorr/tagged",
-  "repository": "github:ryanmorr/tagged",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanmorr/tagged.git"
+  },
   "bugs": "https://github.com/ryanmorr/tagged/issues",
   "keywords": [
     "javascript",
